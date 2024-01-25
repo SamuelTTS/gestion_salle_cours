@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 50px rgba(0, 0, 0, 15);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="submit"]
+        {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        input[type="submit"] {
+            background-color: midnightblue;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgb(64, 64, 148);
+        }
+        footer {
+            margin-top: 300px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            background-color: midnightblue;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="{% url 'ajouter_salles' %}" method="post">
+        {% csrf_token %}
+        <h1>AJOUTER SALLES</h1>
+
+        {% if messages %}
+        <div class="error-messages" style="color: red; border-radius: 5px;">
+            <!-- {% for message in messages %} -->
+            <p class="error">{{ message }}</p>
+            <!-- {% endfor %} -->
+        </div>
+        {% endif %}
+        <input type="text" name="numero" placeholder="numero de la salle">
+        <br>
+        <input type="text" name="capaciter" placeholder="capaciter de la salle">
+        <br>
+        <br>
+
+        <input type="submit">
+    </form>
+    <footer>
+        <p>&copy; 2023 Gestion Des Salles de Cours. Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>

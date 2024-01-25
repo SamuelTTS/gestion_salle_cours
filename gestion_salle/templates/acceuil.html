@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - gestion</title>
+    <style>
+        /* Reset some default styles for better consistency */
+        body,
+        h1,
+        h2,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        h2,
+        a {
+            text-align: center;
+            text-decoration: none;
+            color: rgb(250, 250, 250);
+        
+        }
+
+        a{
+            padding-left: 60px;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: midnightblue;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            height: auto;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        footer {
+            margin-top: 155px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            background-color: midnightblue;
+            height: 50px;
+        }
+
+        a:hover {
+            color: rgb(90, 90, 201);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 style="font-size: 60px;">Gestion des Salles de Cours</h1>
+        <nav style="color: white;">
+            <a href="{% url 'reserver_salle' %}">Reservation</a>
+            <a href="{% url 'liberer_salle' %}">Liberation</a>
+            <a href="{% url 'login1' %}">Connexion</a>
+        </nav>
+    </header>
+
+    <main>
+        <p style="font-size: 30px;">Bienvenue sur notre application de Gestion des Salles de Cours :</p>
+        <p style="font-size: 20px; color: midnightblue;">Veuiller choisir dans la barre de navigation l'operation que vous vouler effectuer</p>
+
+        <!-- <h2 style=" width: max-content;"><a style="margin-right: 50px;" href="{% url 'reserver_salle' %}"> RESERVER UNE
+                SALLE</a><a style="margin-left: 50px;" href="{% url 'liberer_salle' %}"> LIBERER UNE SALLE</a></h2>
+        <br>
+        <h2><a href="{% url 'liste_salles' %}"> LISTE DES SALLES</a></h2> -->
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Gestion Des Salles de Cours. Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>

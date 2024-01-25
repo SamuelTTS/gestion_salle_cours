@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 50px rgba(0, 0, 0, 15);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"]
+         {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] ,a {
+            background-color: midnightblue;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color:  rgb(64, 64, 148);
+        }
+        footer {
+            margin-top: 220px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            background-color: midnightblue;
+            height: 40px;
+        }
+    </style>
+  </head>
+  <body>
+
+    <h1 style="text-align: center; background-color: midnightblue; color: white; height: auto;">Connexion</h1>
+    
+    <form class="login-form" method="post" action="{% url 'login1' %}">
+        {% if messages %}
+      <div class="error-messages" style="background-color: red; border-radius: 5px;color: white;">
+        {% for message in messages %}
+          <p class="error">{{ message }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+      {% csrf_token %}
+      <div class="flex-row">
+        <label class="lf--label" for="username">
+          
+        </label>
+        <input id="username" name="username" class="lf--input" placeholder="Username" type="text" required />
+      </div>
+      <div class="flex-row">
+        <label class="lf--label" for="password">
+          
+        </label>
+        <input id="password" name="password" class="lf--input" placeholder="Password" type="password" required />
+      </div>
+      <input  type="submit" value="Se connecter" />
+    </form>
+  </body>
+</html>

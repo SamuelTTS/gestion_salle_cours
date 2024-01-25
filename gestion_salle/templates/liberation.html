@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libération de Salle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 50px rgba(0, 0, 0, 15);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button ,a {
+            background-color: midnightblue;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color:  rgb(64, 64, 148);
+        }
+        footer {
+            margin-top: 220px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            background-color: midnightblue;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style=" color: white; text-align: center; background-color: midnightblue;  padding: 20px;">Libération de Salle</h1>
+
+    <!-- Formulaire de libération -->
+    <form method="post" action="{% url 'liberer_salle' %}">
+        {% csrf_token %}
+        <label for="salle" style="font-size:25px;">Salle:</label>
+        <select style="font-size:20px;" name="salle" required>
+            <!-- Options de salle (vous devez récupérer ces options de votre base de données) -->
+            {% for salle in salles %}
+               {% if not salle.disponible %}
+                    <option value="{{ salle.id }}">{{ salle.numero }}</option>
+                {% endif %}
+            {% endfor %}
+            <!-- ... -->
+        </select>
+        <br>
+        <br>
+        <button type="submit">Libérer</button>
+        <a style="text-decoration: none; float: right;" href="{% url 'acceuil' %}">retour</a>
+    </form>
+
+    <!-- Affichage des résultats ou des erreurs -->
+    {% if result %}
+    <p>{{ result }}</p>
+    {% endif %}
+
+    <footer>
+        <p>&copy; 2023 Gestion Des Salles de Cours. Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>
